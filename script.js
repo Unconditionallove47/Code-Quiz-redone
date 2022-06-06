@@ -64,7 +64,7 @@ var questionsArray = [
   },
 ];
 var answers = ["1912", "2.097M", "Wheeler Park", "Southwest US", "Zia"];
-var timeLeft = "";
+var timeLeft = " ";
 let i = 0;
 var currentScore = "";
 
@@ -92,11 +92,17 @@ function nextUp() {
       localStorage.setItem("Initials", playerScore);
     }
     Score = timeLeft + 1;
-    localStorage.setItem("Top Scores", Score);
-    clearInterval(timeInterval);
+    localStorage.setItem("Top Scores",currentScore)
+    console.log(currentScore)
+    clearInterval(timeInterval)
+    quizPrompts.setAttribute('style', 'display:none');
+    quizQuestion.setAttribute('style', 'display:none');
+    choices.setAttribute('style', 'display:none');
+    startBtn.setAttribute('style', 'display:flex');
+    timerA.setAttribute('style','display:none;')
   }
 }
-var timeInterval = "";
+var timeInterval = " ";
 function timerCount() {
   timeInterval = setInterval(function () {
     if (timeLeft > 1) {
@@ -121,7 +127,7 @@ function timerCount() {
       timerA.textContent = "";
 
       clearInterval(timeInterval);
-
+      
 
       confirm("Nice try! Wanna play again?");
     }
