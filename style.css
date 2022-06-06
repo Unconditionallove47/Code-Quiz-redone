@@ -1,0 +1,90 @@
+
+body {
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Northern_New_Mexico.jpg/1280px-Northern_New_Mexico.jpg);
+    background-size: cover;
+    margin: auto;
+    
+  
+}
+h1 {
+    color: rgb(124, 27, 108);
+    text-align: center;
+  }
+  header {
+    font-family: verdana;
+    font-size: 20px;
+    text-align: center;
+  }
+
+#scoreList {
+    list-style-type: decimal;
+    color:darkgray;
+    background-color: white;
+    padding: 2px;
+    position: relative;
+    text-align: left;
+    font-size: small;
+    width:fit-content;
+    display:none;
+}
+
+
+
+.quiz {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+#timerA {
+    color: rgb(155, 18, 18);
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+}
+
+.start {
+    background-color: rgb(189, 189, 189);
+    border-radius: 30px;
+    size-adjust: 30px;
+    transform: scale(2);
+    display: flex;
+}
+
+#question {
+    display: none;
+    background-color: rgb(129, 128, 128);
+    color: black;
+    font-size: x-large;
+    font-weight: bolder;
+    margin: auto;
+    padding: 10px;
+    border: 3px solid black;
+    border-radius: 30px;
+    width: fit-content;
+}
+
+#choices {
+    list-style-type: none;
+}
+
+#choices li {
+    border: 2px solid rgb(167, 167, 167);
+    color:rgb(51, 167, 128);
+    background-color: black;
+    font-size:medium;
+    padding: 5px;
+    border-radius: 50px;
+    padding: 9px;
+    margin: auto;
+    width: fit-content;
+}
+
+#qb {
+    flex-direction: column;
+    display: none;
+}
