@@ -1,10 +1,10 @@
+var timerA = document.querySelector("#timer");
 var highscoreBtn = document.querySelector(".highscores");
 
 var startBtn = document.querySelector(".start");
 
 var scoreList = document.querySelector("#scoreList");
 
-var timer = document.querySelector("#timerA");
 
 var quizQuestion = document.querySelector("#question");
 
@@ -64,12 +64,11 @@ var questionsArray = [
   },
 ];
 var answers = ["1912", "2.097M", "Wheeler Park", "Southwest US", "Zia"];
-
 var timeLeft = "";
 let i = 0;
 var currentScore = "";
 
-function next() {
+function nextUp() {
   if (i < 4) {
     quizQuestion.textContent = questionsArray[i].question;
     quizPrompts.setAttribute("style", "display:flex");
@@ -83,51 +82,56 @@ function next() {
     choices.append(option2);
     choices.append(option3);
     choices.append(option4);
+
   } else {
     var playerScore = prompt("Input initials!");
     if (userScore.length != 2) {
       alert("First and last initials only!");
-      next();
+      nextUp();
     } else {
       localStorage.setItem("Initials", playerScore);
     }
-    Score = timeLeft ++;
+    Score = timeLeft + 1;
     localStorage.setItem("Top Scores", Score);
-    console.log(Score);
     clearInterval(timeInterval);
-    quizPrompts.setAttribute("style", "display:none");
-    quizQuestion.setAttribute("style", "display:none");
-    choices.setAttribute("style", "display:none");
-    startBtn.setAttribute("style", "display:flex");
-    timer.setAttribute("style", "display:none;");
   }
 }
 var timeInterval = "";
-function tickTock() {
+function timerCount() {
   timeInterval = setInterval(function () {
     if (timeLeft > 1) {
-      timer.textContent = timeLeft + " seconds remaining";
+
+      timerA.textContent = timeLeft + " seconds remaining";
 
       timeLeft--;
+
     } else if (timeLeft === 1) {
-      timer.textContent = timeLeft + " second remaining";
+
+      timerA.textContent = timeLeft + " second remaining";
+
       timeLeft--;
+
     } else if (timeLeft === 0) {
-      timer.textContent = timeLeft + " seconds remaining";
+
+      timerA.textContent = timeLeft + " seconds remaining";
+
       timeLeft--;
+
     } else {
-      timer.textContent = "";
+      timerA.textContent = "";
+
       clearInterval(timeInterval);
-      startBtn.setAttribute("style", "display:flex");
+
+
       confirm("Nice try! Wanna play again?");
     }
   }, 1000);
 }
 function countdown() {
-  tickTock();
-  timeLeft = 120;
+  timerCount();
+  timeLeft = 150;
   startBtn.setAttribute("style", "display:none");
-  next();
+  nextUp();
 }
 
 startBtn.addEventListener("click", countdown);
@@ -136,7 +140,7 @@ choices.addEventListener("click", function (event) {
   var userInput = event.target.innerHTML;
   if (userInput === answers[i]) {
     i++;
-    next();
+    nextUp();
   } else if (userInput !== answers[i]) {
     timeLeft = timeLeft - 10;
   }
@@ -144,6 +148,5 @@ choices.addEventListener("click", function (event) {
 
 highscoreBtn.addEventListener("click", function () {
   console.log("clicked");
-  var leaderboard = [localStorage.getItem("Top Score")];
-  leaderboard = document.createElement("<li>");
+  leaderboard = [localStorage.getItem("Top Score")];
 });

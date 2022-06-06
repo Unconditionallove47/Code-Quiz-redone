@@ -38,7 +38,7 @@ h1 {
     align-items: center;
 }
 
-#timerA {
+#timer {
     color: rgb(155, 18, 18);
     font-size: 30px;
     display: flex;
@@ -68,9 +68,6 @@ h1 {
     width: fit-content;
 }
 
-#choices {
-    list-style-type: none;
-}
 
 #choices li {
     border: 2px solid rgb(167, 167, 167);
@@ -87,4 +84,8 @@ h1 {
 #qb {
     flex-direction: column;
     display: none;
+}
+
+#choices {
+    list-style-type: none;
 }
