@@ -1,10 +1,11 @@
-var timerA = document.querySelector("#timer");
+//MAKE SURE YOU HAVE OPTIONS AND PROMPTS SET UP PROPERLY
 var highscoreBtn = document.querySelector(".highscores");
 
 var startBtn = document.querySelector(".start");
 
-var scoreList = document.querySelector("#scoreList");
+var timerA = document.querySelector("#timer");
 
+var scoreList = document.querySelector("#scoreList");
 
 var quizQuestion = document.querySelector("#question");
 
@@ -19,11 +20,12 @@ var option3 = document.createElement("li");
 var option4 = document.createElement("li");
 
 var choices = document.querySelector("#choices");
-
+//HS AND LB NOT WORKING
 var highscores = [];
 var leaderboard = [];
 var correctAnswer = [];
 
+//PSEUDO CODE BELOW
 //text below quiz main menu explained what to do
 //when start button is clicked, start button diapears and quiz question pops up
 //timer starts when first quiz question pops up
@@ -69,7 +71,7 @@ let i = 0;
 var currentScore = "";
 
 function nextUp() {
-  if (i < 4) {
+  if (i < 5) {
     quizQuestion.textContent = questionsArray[i].question;
     quizPrompts.setAttribute("style", "display:flex");
     quizQuestion.setAttribute("style", "display:block");
@@ -85,21 +87,19 @@ function nextUp() {
 
   } else {
     var playerScore = prompt("Input initials!");
-    if (userScore.length != 2) {
+    var userScore = JSON.parse(localStorage.getItem("Top Scores"))|| [];
+    if (playerScore.length != 2) {
       alert("First and last initials only!");
       nextUp();
     } else {
-      localStorage.setItem("Initials", playerScore);
+      userScore.push(playerScore);
+      localStorage.setItem("Top Scores", JSON.stringify(userScore));
     }
     Score = timeLeft + 1;
-    localStorage.setItem("Top Scores",currentScore)
+    // localStorage.setItem("Top Scores",currentScore)
     console.log(currentScore)
     clearInterval(timeInterval)
-    quizPrompts.setAttribute('style', 'display:none');
-    quizQuestion.setAttribute('style', 'display:none');
-    choices.setAttribute('style', 'display:none');
-    startBtn.setAttribute('style', 'display:flex');
-    timerA.setAttribute('style','display:none;')
+    highscores.push(Score);
   }
 }
 var timeInterval = " ";
@@ -151,8 +151,9 @@ choices.addEventListener("click", function (event) {
     timeLeft = timeLeft - 10;
   }
 });
-
+//NEEDS REWORKING
 highscoreBtn.addEventListener("click", function () {
   console.log("clicked");
-  leaderboard = [localStorage.getItem("Top Score")];
+  leaderboard = JSON.parse(localStorage.getItem("Top Scores")) || [];
+  alert(leaderboard);
 });
