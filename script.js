@@ -64,14 +64,18 @@ var questionsArray = [
     question: "What is New Mexico's flag symbol",
     options: ["Sun", "A Circle and lines", "Zia", "Pentagram"],
   },
+  {
+    question: "Why is relearning so hard?",
+    options: ["its not", "try harder","I get it", "ehhh"],
+  },
 ];
-var answers = ["1912", "2.097M", "Wheeler Park", "Southwest US", "Zia"];
+var answers = ["1912", "2.097M", "Wheeler Park", "Southwest US", "Zia", "try harder"];
 var timeLeft = " ";
 let i = 0;
 var currentScore = "";
 
 function nextUp() {
-  if (i < 5) {
+  if (i < 6) {
     quizQuestion.textContent = questionsArray[i].question;
     quizPrompts.setAttribute("style", "display:flex");
     quizQuestion.setAttribute("style", "display:block");
@@ -99,7 +103,7 @@ function nextUp() {
     // localStorage.setItem("Top Scores",currentScore)
     console.log(currentScore)
     clearInterval(timeInterval)
-    highscores.push(Score);
+    highscores.push(Score,currentScore);
   }
 }
 var timeInterval = " ";
